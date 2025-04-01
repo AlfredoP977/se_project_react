@@ -1,6 +1,6 @@
 import "./Header.css";
-import defaultAvatar from "./assets/defaultAvatar.svg";
-import weatherLogo from "./assets/weatherLogo.svg";
+import defaultAvatar from "../../assets/defaultAvatar.svg";
+import weatherLogo from "../../assets/weatherLogo.svg";
 function Header() {
   return (
     <header className="header">

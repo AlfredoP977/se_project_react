@@ -1,4 +1,8 @@
-.app {
-  color: green;
-  font-size: 69px;
+.page {
+  background-color: #f3f3f3;
+  background-size: cover;
+}
+.page__content {
+  max-width: 1360px;
+  margin: 0 auto;
 }

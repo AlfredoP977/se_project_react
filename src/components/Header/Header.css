@@ -1,0 +1,8 @@
+.header {
+  display: flex;
+  flex-direction: row;
+}
+.header__user-container {
+  display: flex;
+  margin-left: auto;
+}

@@ -1,0 +1,19 @@
+.cards__img {
+  width: 100%;
+  border: 2px solid rgba(0, 0, 0, 0.3);
+  border-radius: 8px;
+  margin: 0;
+  padding: 0;
+}
+.cards__name {
+  margin: 15px 0 0;
+  padding: 2px 12px;
+  border-radius: 4px;
+  position: absolute;
+  background-color: #fff;
+}
+.card-container {
+  display: flex;
+  justify-content: center;
+  width: 328px;
+}

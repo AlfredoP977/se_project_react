@@ -1,0 +1,25 @@
+.modal_type_image {
+  padding: 0;
+}
+.modal__image {
+}
+.modal__close_previw {
+  background-image: url(../../assets/closeBtnPreview.svg);
+}
+.modal__footer {
+  padding: 0 32px 32px;
+}
+.modal__caption {
+  padding-top: 20px;
+  margin: 0;
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 24px;
+}
+.modal__weather {
+  padding-top: 12px;
+  margin: 0;
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 24px;
+}

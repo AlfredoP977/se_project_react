@@ -1,10 +1,10 @@
 import "./ItemModal.css";
-function ItemModal({ isOpen, handlecloseClick, card }) {
+function ItemModal({ isOpen, onClose, card }) {
   return (
     <div className={`modal ${isOpen && "modal_opened"}`}>
       <div className="modal__content modal_type_image">
         <button
-          onClick={handlecloseClick}
+          onClick={onClose}
           type="button"
           className="modal__close modal__close_previw"
         ></button>

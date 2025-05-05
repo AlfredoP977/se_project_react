@@ -22,7 +22,7 @@ function App() {
     isday: false,
   });
 
-  const [clothingItems, setClothingItems] = useState([defaultClothingItems]);
+  const [clothingItems, setClothingItems] = useState(defaultClothingItems);
   const [activeModal, setActiveModal] = useState("");
   const [selectedCard, setSelectedCard] = useState({});
   const [currentTempuratureUnit, setCurrentTempuratureUnit] = useState("F");
@@ -39,6 +39,13 @@ function App() {
 
   const closeActiveModal = () => {
     setActiveModal("");
+  };
+
+  const hanleAddItemModalSubmit = ({ name, imageUrl, weather }) => {
+    //update cloth item array
+    setClothingItems([{ name, link: imageUrl, weather }, ...clothingItems]);
+    //close modal
+    closeActiveModal();
   };
 
   useEffect(() => {
@@ -69,6 +76,7 @@ function App() {
         <AddItemModal
           isOpen={activeModal === "add-garment"}
           onClose={closeActiveModal}
+          onAddItemModalSubmit={hanleAddItemModalSubmit}
         />
         <ItemModal
           card={selectedCard}

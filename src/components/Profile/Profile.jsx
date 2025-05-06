@@ -1,12 +1,12 @@
 import "./Profile.css";
 import SideBar from "../SideBar/SideBar";
 import ClothesSection from "../ClothesSection/ClothesSection";
-function Profile({ clothingItems }) {
+function Profile() {
   return (
     <div className="profile">
       <SideBar />
 
-      <ClothesSection clothingItems={clothingItems} />
+      <ClothesSection />
     </div>
   );
 }

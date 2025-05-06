@@ -84,10 +84,7 @@ function App() {
                 />
               }
             />
-            <Route
-              path="/profile"
-              element={<Profile clothingItems={clothingItems} />}
-            />
+            <Route path="/profile" element={<Profile />} />
           </Routes>
           <Footer />
         </div>

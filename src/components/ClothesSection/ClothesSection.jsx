@@ -1,8 +1,9 @@
 import "./ClothesSection.css";
+import ItemCard from "../ItemCard/ItemCard";
 
 import { defaultClothingItems } from "../../utils/constant";
 
-function ClothesSection() {
+function ClothesSection({ handleCardClick }) {
   return (
     <div className="clothes-section">
       <div>

@@ -48,7 +48,7 @@ function App() {
     setActiveModal("");
   };
 
-  const hanleAddItemModalSubmit = ({ name, imageUrl, weather }) => {
+  const handleAddItemModalSubmit = ({ name, imageUrl, weather }) => {
     //update cloth item array
     setClothingItems([{ name, link: imageUrl, weather }, ...clothingItems]);
     //close modal
@@ -91,7 +91,7 @@ function App() {
         <AddItemModal
           isOpen={activeModal === "add-garment"}
           onClose={closeActiveModal}
-          onAddItemModalSubmit={hanleAddItemModalSubmit}
+          onAddItemModalSubmit={handleAddItemModalSubmit}
         />
         <ItemModal
           card={selectedCard}

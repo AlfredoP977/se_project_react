@@ -37,4 +37,11 @@
   font-size: 20px;
   line-height: 100%;
   margin: 0;
+  align-self: center;
+}
+.header__link {
+  text-decoration: none;
+  color: black;
+  display: flex;
+  direction: row;
 }

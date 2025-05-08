@@ -1,0 +1,14 @@
+.sideBar {
+  display: flex;
+  direction: row;
+}
+.sideBar_avatar {
+  height: 50px;
+  width: 50px;
+}
+.sideBar_username {
+  font-weight: 700;
+  size: 20px;
+  line-height: 100%;
+  letter-spacing: 0%;
+}

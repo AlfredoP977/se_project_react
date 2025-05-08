@@ -5,12 +5,12 @@ import { defaultClothingItems } from "../../utils/constant";
 
 function ClothesSection({ handleCardClick }) {
   return (
-    <div className="clothes-section">
+    <div className="clothes_section">
       <div>
         <p>Your items</p>
         <button>+ Add New</button>
       </div>
-      <ul className="cards__list">
+      <ul className="clothes_section_cards_list">
         {defaultClothingItems.map((item) => {
           return (
             <ItemCard

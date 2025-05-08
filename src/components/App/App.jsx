@@ -19,6 +19,7 @@ import Profile from "../Profile/Profile.jsx";
 import Footer from "../Footer/Footer";
 //context
 import CurrentTemperatureUnitContext from "../../contexts/CurrentTemperatureUnitContext.jsx";
+import { getItems } from "../../utils/api.js";
 
 function App() {
   const [weatherData, setWeatherData] = useState({
@@ -62,6 +63,12 @@ function App() {
         setWeatherData(filterData);
       })
       .catch(console.error);
+  }, []);
+
+  useEffect(() => {
+    getItems((data) => {
+      console.log(data);
+    });
   }, []);
 
   return (

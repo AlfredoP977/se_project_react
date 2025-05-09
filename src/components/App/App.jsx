@@ -69,6 +69,14 @@ function App() {
   useEffect(() => {
     getItems((data) => {
       console.log(data);
+      const formattedArray = data.map(({ _id, name, weather, imageUrl }) => ({
+        _id,
+        name,
+        weather,
+        link: imageUrl,
+      }));
+
+      setClothingItems([formattedArray, ...clothingItems]);
     }).catch(console.error);
     //set clothing items
   }, []);

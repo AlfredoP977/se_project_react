@@ -5,6 +5,7 @@
 .sideBar_avatar {
   height: 50px;
   width: 50px;
+  margin-right: 16px;
 }
 .sideBar_username {
   font-weight: 700;

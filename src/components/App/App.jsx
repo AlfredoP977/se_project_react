@@ -35,6 +35,8 @@ function App() {
   const [selectedCard, setSelectedCard] = useState({});
   const [currentTempuratureUnit, setCurrentTempuratureUnit] = useState("F");
 
+  console.log(defaultClothingItems);
+
   const handleToggleSwitchChange = () => {
     setCurrentTempuratureUnit(currentTempuratureUnit === "F" ? "C" : "F");
   };
@@ -67,17 +69,24 @@ function App() {
   }, []);
 
   useEffect(() => {
-    getItems((data) => {
-      console.log(data);
-      const formattedArray = data.map(({ _id, name, weather, imageUrl }) => ({
-        _id,
-        name,
-        weather,
-        link: imageUrl,
-      }));
+    getItems()
+      .then((data) => {
+        console.log("Raw API response:", data); // Log entire response
+        console.log("Extracted items:", data.items); // Log items separately
+        // setClothingItems({ name, link: imageUrl, weather })
 
-      setClothingItems([formattedArray, ...clothingItems]);
-    }).catch(console.error);
+        const reformattedArray = data.map(
+          ({ _id, name, weather, imageUrl }) => ({
+            _id,
+            name,
+            weather: weather.toLowerCase(), // Standardizing weather formatting
+            link: imageUrl, // Renaming 'imageUrl' to 'link'
+          })
+        );
+        setClothingItems(reformattedArray);
+        console.log(reformattedArray);
+      })
+      .catch(console.error);
     //set clothing items
   }, []);
 
@@ -104,7 +113,12 @@ function App() {
             />
             <Route
               path="/profile"
-              element={<Profile handleCardClick={handleCardClick} />}
+              element={
+                <Profile
+                  clothingItems={clothingItems}
+                  handleCardClick={handleCardClick}
+                />
+              }
             />
           </Routes>
           <Footer />

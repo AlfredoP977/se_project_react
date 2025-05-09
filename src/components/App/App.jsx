@@ -34,6 +34,7 @@ function App() {
   const [activeModal, setActiveModal] = useState("");
   const [selectedCard, setSelectedCard] = useState({});
   const [currentTempuratureUnit, setCurrentTempuratureUnit] = useState("F");
+
   const handleToggleSwitchChange = () => {
     setCurrentTempuratureUnit(currentTempuratureUnit === "F" ? "C" : "F");
   };
@@ -68,7 +69,8 @@ function App() {
   useEffect(() => {
     getItems((data) => {
       console.log(data);
-    });
+    }).catch(console.error);
+    //set clothing items
   }, []);
 
   return (
@@ -83,6 +85,7 @@ function App() {
             <Route
               path=""
               element={
+                // pass clothingItems prop
                 <Main
                   currentTempuratureUnit={currentTempuratureUnit}
                   weatherData={weatherData}

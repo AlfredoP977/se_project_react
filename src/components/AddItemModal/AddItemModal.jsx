@@ -29,8 +29,8 @@ export default function AddItemModal({
     setWeather("");
   };
 
-  console.log(name);
-  console.log(weather);
+  // console.log(name);
+  // console.log(weather);
 
   return (
     <ModalWithForm

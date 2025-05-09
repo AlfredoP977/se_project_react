@@ -4,7 +4,7 @@ import ItemCard from "../ItemCard/ItemCard";
 import CurrentTemperatureUnitContext from "../../contexts/CurrentTemperatureUnitContext";
 
 function Main({
-  currentTempuratureUnit,
+  currentTemperatureUnit,
   weatherData,
   handleCardClick,
   clothingItems,
@@ -15,10 +15,10 @@ function Main({
       <section className="cards">
         <p className="cards__text">
           Today is{" "}
-          {currentTempuratureUnit === "F"
+          {currentTemperatureUnit === "F"
             ? weatherData.temp.F
             : weatherData.temp.C}
-          ° {currentTempuratureUnit} / You may want to wear:
+          ° {currentTemperatureUnit} / You may want to wear:
         </p>
         <ul className="cards__list">
           {clothingItems

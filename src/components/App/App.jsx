@@ -33,12 +33,12 @@ function App() {
   const [clothingItems, setClothingItems] = useState(defaultClothingItems);
   const [activeModal, setActiveModal] = useState("");
   const [selectedCard, setSelectedCard] = useState({});
-  const [currentTempuratureUnit, setCurrentTempuratureUnit] = useState("F");
+  const [currentTemperatureUnit, setCurrentTemperatureUnit] = useState("F");
 
   console.log(defaultClothingItems);
 
   const handleToggleSwitchChange = () => {
-    setCurrentTempuratureUnit(currentTempuratureUnit === "F" ? "C" : "F");
+    setCurrentTemperatureUnit(currentTemperatureUnit === "F" ? "C" : "F");
   };
   const handleCardClick = (card) => {
     setActiveModal("preview");
@@ -92,7 +92,7 @@ function App() {
 
   return (
     <CurrentTemperatureUnitContext.Provider
-      value={{ currentTempuratureUnit, handleToggleSwitchChange }}
+      value={{ currentTemperatureUnit, handleToggleSwitchChange }}
     >
       {" "}
       <div className="page">
@@ -104,7 +104,7 @@ function App() {
               element={
                 // pass clothingItems prop
                 <Main
-                  currentTempuratureUnit={currentTempuratureUnit}
+                  currentTemperatureUnit={currentTemperatureUnit}
                   weatherData={weatherData}
                   handleCardClick={handleCardClick}
                   clothingItems={clothingItems}

@@ -11,25 +11,25 @@ function getItems() {
 //   });
 // }
 //delete
-function deleteItem(itemId) {
-  return fetch(`${baseUrl}/items/${itemId}`, {
-    method: "DELETE",
-  }).then((res) =>
-    res.ok ? res.json() : Promise.reject(`Error: ${res.status}`)
-  );
-}
+// function deleteItem(itemId) {
+//   return fetch(`${baseUrl}/items/${itemId}`, {
+//     method: "DELETE",
+//   }).then((res) =>
+//     res.ok ? res.json() : Promise.reject(`Error: ${res.status}`)
+//   );
+// }
 
-//post
-function addItem(itemData) {
-  return fetch(`${baseUrl}/items`, {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify(itemData),
-  }).then((res) =>
-    res.ok ? res.json() : Promise.reject(`Error: ${res.status}`)
-  );
-}
+// //post
+// function addItem(itemData) {
+//   return fetch(`${baseUrl}/items`, {
+//     method: "POST",
+//     headers: {
+//       "Content-Type": "application/json",
+//     },
+//     body: JSON.stringify(itemData),
+//   }).then((res) =>
+//     res.ok ? res.json() : Promise.reject(`Error: ${res.status}`)
+//   );
+// }
 
-export { getItems, addItem, deleteItem };
+export { getItems };

@@ -29,6 +29,7 @@ function App() {
     condition: "",
     isday: false,
   });
+  console.log("weatherData", weatherData);
   console.log(
     "weather:",
     `${
@@ -149,3 +150,4 @@ function App() {
 }
 
 export default App;
+// json-server --watch db.json --id _id --port 3001

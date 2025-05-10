@@ -1,16 +1,17 @@
-import { weatherCondition } from "../../utils/";
+import { weatherCondition } from "../../utils/weatherConditions.js";
 
-function Lol({ selectLol }) {
-  let lol = data.find((item) => {
-    return item.name == selectLol;
+function CurrentClimate({ selectedCurrentClimate }) {
+  let currentClimate = weatherCondition.find((item) => {
+    return item.name == selectedCurrentClimate;
   });
-  lol = lol?.image
-    ? lol
+
+  currentClimate = currentClimate?.image
+    ? currentClimate
     : data.find((item) => {
-        return item.name == "default";
+        return item.name == "SunnyDay";
       });
 
-  return <img src={lol.image} alt={lol.name} />;
+  return <img src={currentClimate.image} alt={currentClimate.name} />;
 }
 
-export default Lol;
+export default CurrentClimate;

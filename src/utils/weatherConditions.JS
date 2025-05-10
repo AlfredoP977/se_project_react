@@ -54,14 +54,14 @@ export const weatherCondition = [
     ).href,
   },
   {
-    name: "SunnyDay",
-    image: new URL("../assets/weatherConditions/SunnyDay.svg", import.meta.url)
+    name: "ClearDay",
+    image: new URL("../assets/weatherConditions/ClearDay.svg", import.meta.url)
       .href,
   },
   {
-    name: "SunnyNight",
+    name: "ClearNight",
     image: new URL(
-      "../assets/weatherConditions/SunnyNight.svg",
+      "../assets/weatherConditions/ClearNight.svg",
       import.meta.url
     ).href,
   },

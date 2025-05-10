@@ -19,7 +19,7 @@ function WeatherCard({ weatherData }) {
           weatherData.condition.slice(1)
         }${weatherData.isday ? "Day" : "Night"}`}
       />
-      <CurrentClimate selectedCurrentClimate="FogDay" />
+      {/* <CurrentClimate selectedCurrentClimate="FogDay" /> */}
       {/* <img src={SunnyDay} alt="Sunny Day" className="weather-card__image" /> */}
     </section>
   );

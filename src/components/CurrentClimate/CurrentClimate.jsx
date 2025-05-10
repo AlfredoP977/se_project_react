@@ -1,4 +1,4 @@
-import { weatherCondition } from "../../utils/weatherConditions.js";
+import { weatherCondition } from "../../utils/weatherConditions.JS";
 
 function CurrentClimate({ selectedCurrentClimate }) {
   let currentClimate = weatherCondition.find((item) => {
@@ -7,7 +7,7 @@ function CurrentClimate({ selectedCurrentClimate }) {
 
   currentClimate = currentClimate?.image
     ? currentClimate
-    : data.find((item) => {
+    : weatherCondition.find((item) => {
         return item.name == "SunnyDay";
       });
 

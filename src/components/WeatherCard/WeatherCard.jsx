@@ -13,6 +13,7 @@ function WeatherCard({ weatherData }) {
           : weatherData.temp.C}
         ° {currentTemperatureUnit}
       </p>
+      <CurrentClimate selectedCurrentClimate="fogDay" />
       <img src={SunnyDay} alt="Sunny Day" className="weather-card__image" />
     </section>
   );

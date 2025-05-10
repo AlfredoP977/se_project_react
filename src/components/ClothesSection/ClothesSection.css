@@ -17,6 +17,7 @@
   direction: row;
 }
 .clothes_section_add-btn {
+  margin-left: 20px;
   border: none;
   font-weight: 700;
   size: 20px;

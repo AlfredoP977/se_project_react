@@ -30,6 +30,9 @@ function App() {
     isday: false,
   });
 
+  console.log(weatherData.condition);
+  console.log(weatherData.isday);
+  console.log(weatherData);
   const [clothingItems, setClothingItems] = useState(defaultClothingItems);
   const [activeModal, setActiveModal] = useState("");
   const [selectedCard, setSelectedCard] = useState({});

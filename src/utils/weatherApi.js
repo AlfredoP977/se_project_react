@@ -1,12 +1,11 @@
-export const getWeather = ({ latitude, longitude }, APIkey) => {
-  return fetch(
+export const getWeather = async ({ latitude, longitude }, APIkey) => {
+  const res = await fetch(
     `https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&units=imperial&appid=${APIkey}`
-  ).then((res) => {
-    if (res.ok) {
-      return res.json();
-    }
-    return Promise.reject(`Error: ${res.status}`);
-  });
+  );
+  if (res.ok) {
+    return res.json();
+  }
+  return await Promise.reject(`Error: ${res.status}`);
 };
 const getWeatherType = (temperature) => {
   if (temperature >= 86) {
@@ -19,7 +18,6 @@ const getWeatherType = (temperature) => {
 };
 
 export const filterWeatherData = (data) => {
-  // console.log("result", result);
   const result = {};
   result.city = data.name;
   result.temp = {
@@ -31,8 +29,6 @@ export const filterWeatherData = (data) => {
   result.isDay = isDay(data.sys, Date.now());
   return result;
 };
-// console.log("result", result);
-// console.log("filterWeatherData", filterWeatherData());
 const isDay = ({ sunrise, sunset }, now) => {
   return sunrise * 1000 < now && now < sunset * 1000;
 };

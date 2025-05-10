@@ -22,24 +22,19 @@ import CurrentTemperatureUnitContext from "../../contexts/CurrentTemperatureUnit
 import { getItems } from "../../utils/api.js";
 
 function App() {
+  console.log("App component mounted!");
+  console.log(data);
+  useEffect(() => {
+    console.log("Updated weather data:", weatherData);
+  }, [weatherData]);
+
   const [weatherData, setWeatherData] = useState({
     type: "",
     temp: { F: 999, C: 999 },
     city: "",
     condition: "",
-    isday: false,
+    isDay: false,
   });
-  console.log("weatherData", weatherData);
-  console.log(
-    "weather:",
-    `${
-      weatherData.condition.charAt(0).toUpperCase() +
-      weatherData.condition.slice(1)
-    }${weatherData.isday ? "Day" : "Night"}`
-  );
-  console.log(weatherData.condition);
-  console.log(weatherData.isday);
-  console.log(weatherData);
   const [clothingItems, setClothingItems] = useState(defaultClothingItems);
   const [activeModal, setActiveModal] = useState("");
   const [selectedCard, setSelectedCard] = useState({});
@@ -69,20 +64,37 @@ function App() {
     closeActiveModal();
   };
 
-  useEffect(() => {
-    getWeather(coordinates, APIkey)
-      .then((data) => {
-        const filterData = filterWeatherData(data);
-        setWeatherData(filterData);
-      })
-      .catch(console.error);
-  }, []);
+  getWeather(coordinates, APIkey)
+    .then((data) => {
+      if (!data || typeof data !== "object") {
+        throw new Error("Invalid API response");
+      }
+      console.log("API Response:", JSON.stringify(data, null, 2));
+      setWeatherData(filterWeatherData(data));
+    })
+    .catch((error) => {
+      console.error("API Error:", error);
+    });
 
+  // useEffect(() => {
+  //   console.log("Starting weather API call...");
+  //   getWeather(coordinates, APIkey)
+  //     .then((data) => {
+  //       console.log("Weather API response:", data);
+  //       const filterData = filterWeatherData(data);
+  //       console.log("Filtered weather data:", filterData);
+  //       setWeatherData(filterData);
+  //     })
+  //     .catch((error) => {
+  //       console.error("Weather API error:", error);
+  //     });
+  // }, []);
   useEffect(() => {
     getItems()
       .then((data) => {
         console.log("Raw API response:", data); // Log entire response
         console.log("Extracted items:", data.items); // Log items separately
+        console.log("API Response Structure:", JSON.stringify(data, null, 2));
         // setClothingItems({ name, link: imageUrl, weather })
 
         const reformattedArray = data.map(

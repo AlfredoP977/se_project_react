@@ -1,4 +1,4 @@
-import { weatherCondition } from "../../utils/weatherConditions.JS";
+import { weatherCondition } from "../../utils/weatherCondition.js";
 
 function CurrentClimate({ selectedCurrentClimate }) {
   let currentClimate = weatherCondition.find((item) => {

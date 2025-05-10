@@ -29,7 +29,13 @@ function App() {
     condition: "",
     isday: false,
   });
-
+  console.log(
+    "weather:",
+    `${
+      weatherData.condition.charAt(0).toUpperCase() +
+      weatherData.condition.slice(1)
+    }${weatherData.isday ? "Day" : "Night"}`
+  );
   console.log(weatherData.condition);
   console.log(weatherData.isday);
   console.log(weatherData);

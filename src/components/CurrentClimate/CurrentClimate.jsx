@@ -11,7 +11,13 @@ function CurrentClimate({ selectedCurrentClimate }) {
         return item.name == "SunnyDay";
       });
 
-  return <img src={currentClimate.image} alt={currentClimate.name} />;
+  return (
+    <img
+      src={currentClimate.image}
+      alt={currentClimate.name}
+      className="weather-card__image"
+    />
+  );
 }
 
 export default CurrentClimate;

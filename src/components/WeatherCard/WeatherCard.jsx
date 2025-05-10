@@ -1,7 +1,7 @@
-import SunnyDay from "../../assets/weatherConditions/SunnyDay.svg";
 import "./WeatherCard.css";
 import { useContext } from "react";
 import CurrentTemperatureUnitContext from "../../contexts/CurrentTemperatureUnitContext";
+import CurrentClimate from "../CurrentClimate/CurrentClimate";
 
 function WeatherCard({ weatherData }) {
   const { currentTemperatureUnit } = useContext(CurrentTemperatureUnitContext);
@@ -13,8 +13,14 @@ function WeatherCard({ weatherData }) {
           : weatherData.temp.C}
         ° {currentTemperatureUnit}
       </p>
-      <CurrentClimate selectedCurrentClimate="fogDay" />
-      <img src={SunnyDay} alt="Sunny Day" className="weather-card__image" />
+      <CurrentClimate
+        selectedCurrentClimate={`${
+          weatherData.condition.charAt(0).toUpperCase() +
+          weatherData.condition.slice(1)
+        }${weatherData.isday ? "Day" : "Night"}`}
+      />
+      <CurrentClimate selectedCurrentClimate="FogDay" />
+      {/* <img src={SunnyDay} alt="Sunny Day" className="weather-card__image" /> */}
     </section>
   );
 }

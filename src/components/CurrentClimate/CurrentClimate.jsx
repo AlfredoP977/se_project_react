@@ -2,15 +2,15 @@ import { weatherCondition } from "../../utils/weatherCondition.js";
 
 function CurrentClimate({ selectedCurrentClimate }) {
   let currentClimate = weatherCondition.find((item) => {
-    return item.name == selectedCurrentClimate;
+    return item.name === selectedCurrentClimate;
   });
 
   currentClimate = currentClimate?.image
     ? currentClimate
     : weatherCondition.find((item) => {
-        return item.name == "SunnyDay";
+        return item.name === "SunnyDay";
       });
-
+  console.log("currentClimate.name", currentClimate.name);
   return (
     <img
       src={currentClimate.image}

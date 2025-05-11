@@ -23,10 +23,6 @@ import { getItems } from "../../utils/api.js";
 
 function App() {
   console.log("App component mounted!");
-  console.log(data);
-  useEffect(() => {
-    console.log("Updated weather data:", weatherData);
-  }, [weatherData]);
 
   const [weatherData, setWeatherData] = useState({
     type: "",
@@ -35,6 +31,9 @@ function App() {
     condition: "",
     isDay: false,
   });
+  useEffect(() => {
+    console.log("Updated weather data:", weatherData);
+  }, [weatherData]);
   const [clothingItems, setClothingItems] = useState(defaultClothingItems);
   const [activeModal, setActiveModal] = useState("");
   const [selectedCard, setSelectedCard] = useState({});
@@ -63,32 +62,26 @@ function App() {
     //close modal
     closeActiveModal();
   };
+  useEffect(() => {
+    console.log("useEffect is running!");
+  }, []);
 
-  getWeather(coordinates, APIkey)
-    .then((data) => {
-      if (!data || typeof data !== "object") {
-        throw new Error("Invalid API response");
-      }
-      console.log("API Response:", JSON.stringify(data, null, 2));
-      setWeatherData(filterWeatherData(data));
-    })
-    .catch((error) => {
-      console.error("API Error:", error);
-    });
+  useEffect(() => {
+    getWeather(coordinates, APIkey)
+      .then((data) => {
+        if (!data || typeof data !== "object") {
+          throw new Error("Invalid API response");
+        }
+        console.log("Raw API Data:", JSON.stringify(data, null, 2));
+        const filteredData = filterWeatherData(data);
+        console.log("Filtered Data:", filteredData);
+        setWeatherData(filteredData); // ✅ Corrected state update
+      })
+      .catch((error) => {
+        console.error("API Error:", error);
+      });
+  }, []);
 
-  // useEffect(() => {
-  //   console.log("Starting weather API call...");
-  //   getWeather(coordinates, APIkey)
-  //     .then((data) => {
-  //       console.log("Weather API response:", data);
-  //       const filterData = filterWeatherData(data);
-  //       console.log("Filtered weather data:", filterData);
-  //       setWeatherData(filterData);
-  //     })
-  //     .catch((error) => {
-  //       console.error("Weather API error:", error);
-  //     });
-  // }, []);
   useEffect(() => {
     getItems()
       .then((data) => {
@@ -162,4 +155,3 @@ function App() {
 }
 
 export default App;
-// json-server --watch db.json --id _id --port 3001

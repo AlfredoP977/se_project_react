@@ -2,7 +2,7 @@ import "./WeatherCard.css";
 import { useContext } from "react";
 import CurrentTemperatureUnitContext from "../../contexts/CurrentTemperatureUnitContext";
 import CurrentClimate from "../CurrentClimate/CurrentClimate";
-import { ClearDay } from "../../assets/weatherConditions/ClearDay.svg";
+import ClearDay from "../../assets/weatherConditions/ClearDay.svg";
 
 function WeatherCard({ weatherData }) {
   console.log("weatherData.condition", weatherData);

@@ -17,6 +17,7 @@ import AddItemModal from "../AddItemModal/AddItemModal.jsx";
 import ItemModal from "../ItemModal/ItemModal";
 import Profile from "../Profile/Profile.jsx";
 import Footer from "../Footer/Footer";
+import DeleteItemModal from "../DeleteItemModal/DeleteItemModal";
 //context
 import CurrentTemperatureUnitContext from "../../contexts/CurrentTemperatureUnitContext.jsx";
 import { getItems } from "../../utils/api.js";
@@ -35,7 +36,7 @@ function App() {
     console.log("Updated weather data:", weatherData);
   }, [weatherData]);
   const [clothingItems, setClothingItems] = useState(defaultClothingItems);
-  const [activeModal, setActiveModal] = useState("");
+  const [activeModal, setActiveModal] = useState("delete");
   const [selectedCard, setSelectedCard] = useState({});
   const [currentTemperatureUnit, setCurrentTemperatureUnit] = useState("F");
 
@@ -51,7 +52,9 @@ function App() {
   const handleAddClick = () => {
     setActiveModal("add-garment");
   };
-
+  const handleDeleteClick = () => {
+    setActiveModal("delete");
+  };
   const closeActiveModal = () => {
     setActiveModal("");
   };
@@ -62,6 +65,24 @@ function App() {
     //close modal
     closeActiveModal();
   };
+
+  //   const handleremoveItemModalSubmit = (item) => {
+  //   //remove cloth item array from clothingItems
+  //   setClothingItems(item);
+  //   //close modal
+  //   closeActiveModal();
+  // };
+const handleremoveItemModalSubmit = (item) => {
+    // Remove the item from clothingItems
+    item.remove();
+    setClothingItems(clothingItems);
+
+    // Close modal
+    closeActiveModal();
+};
+
+
+
   useEffect(() => {
     console.log("useEffect is running!");
   }, []);
@@ -147,6 +168,12 @@ function App() {
         <ItemModal
           card={selectedCard}
           isOpen={activeModal === "preview"}
+          onClose={closeActiveModal}
+          handleDeleteClick={handleDeleteClick}
+        />
+        <DeleteItemModal
+          card={selectedCard}
+          isOpen={activeModal === "delete"}
           onClose={closeActiveModal}
         />
       </div>

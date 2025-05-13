@@ -8,7 +8,7 @@ function CurrentClimate({ selectedCurrentClimate }) {
   currentClimate = currentClimate?.image
     ? currentClimate
     : weatherCondition.find((item) => {
-        return item.name === "SunnyDay";
+        return item.name === "ClearDay";
       });
   console.log("currentClimate.name", currentClimate.name);
   return (

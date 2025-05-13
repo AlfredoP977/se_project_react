@@ -2,9 +2,12 @@
   padding: 0;
 }
 .modal__image {
+  width: 498px;
+  height: 498px;
 }
 .modal__close_previw {
   background-image: url(../../assets/closeBtnPreview.svg);
+  background-color: transparent;
 }
 .modal__footer {
   padding: 0 32px 32px;
@@ -22,4 +25,20 @@
   font-weight: 700;
   font-size: 20px;
   line-height: 24px;
+}
+.modal__footer_top-section {
+  display: flex;
+  direction: row;
+  justify-content: space-between;
+}
+.modal__image_delete-btn {
+  border: none;
+  background: none;
+  padding: 20px 0 0;
+  margin: 0;
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 24px;
+  letter-spacing: 0;
+  color: #ff4d00;
 }

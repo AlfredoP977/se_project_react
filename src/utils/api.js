@@ -11,13 +11,13 @@ function getItems() {
 //   });
 // }
 //delete
-// function deleteItem(itemId) {
-//   return fetch(`${baseUrl}/items/${itemId}`, {
-//     method: "DELETE",
-//   }).then((res) =>
-//     res.ok ? res.json() : Promise.reject(`Error: ${res.status}`)
-//   );
-// }
+function deleteItem(itemId) {
+  return fetch(`${baseUrl}/items/${itemId}`, {
+    method: "DELETE",
+  }).then((res) =>
+    res.ok ? res.json() : Promise.reject(`Error: ${res.status}`)
+  );
+}
 
 // //post
 // function addItem(itemData) {
@@ -32,4 +32,4 @@ function getItems() {
 //   );
 // }
 
-export { getItems };
+export { getItems, deleteItem };

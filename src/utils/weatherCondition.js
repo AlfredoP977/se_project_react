@@ -1,13 +1,13 @@
 export const weatherCondition = [
   {
     name: "CloudsDay",
-    image: new URL("../assets/weatherConditions/CloudyDay.svg", import.meta.url)
+    image: new URL("../assets/weatherConditions/CloudsDay.svg", import.meta.url)
       .href,
   },
   {
     name: "CloudsNight",
     image: new URL(
-      "../assets/weatherConditions/CloudyNight.svg",
+      "../assets/weatherConditions/CloudsNight.svg",
       import.meta.url
     ).href,
   },

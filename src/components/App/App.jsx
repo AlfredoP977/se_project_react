@@ -20,7 +20,7 @@ import Footer from "../Footer/Footer";
 import DeleteItemModal from "../DeleteItemModal/DeleteItemModal";
 //context
 import CurrentTemperatureUnitContext from "../../contexts/CurrentTemperatureUnitContext.jsx";
-import { getItems } from "../../utils/api.js";
+import { getItems, deleteItem } from "../../utils/api.js";
 
 function App() {
   console.log("App component mounted!");
@@ -36,7 +36,7 @@ function App() {
     console.log("Updated weather data:", weatherData);
   }, [weatherData]);
   const [clothingItems, setClothingItems] = useState(defaultClothingItems);
-  const [activeModal, setActiveModal] = useState("delete");
+  const [activeModal, setActiveModal] = useState("");
   const [selectedCard, setSelectedCard] = useState({});
   const [currentTemperatureUnit, setCurrentTemperatureUnit] = useState("F");
 
@@ -72,16 +72,22 @@ function App() {
   //   //close modal
   //   closeActiveModal();
   // };
-const handleremoveItemModalSubmit = (item) => {
-    // Remove the item from clothingItems
-    item.remove();
-    setClothingItems(clothingItems);
-
-    // Close modal
-    closeActiveModal();
-};
-
-
+  const handleremoveItemModalSubmit = () => {
+    deleteItem(selectedCard._id)
+      .then((item) => {
+        console.log("item", item);
+        console.log("selectedCard", selectedCard);
+        // Remove the item from clothingItems
+        selectedCard.remove();
+        clothingItems.filter(selectedCard);
+        evt.target.reset();
+        // Close modal
+      })
+      .catch((error) => {
+        console.error("API Error:", error);
+      })
+      .finally(closeActiveModal());
+  };
 
   useEffect(() => {
     console.log("useEffect is running!");
@@ -175,6 +181,7 @@ const handleremoveItemModalSubmit = (item) => {
           card={selectedCard}
           isOpen={activeModal === "delete"}
           onClose={closeActiveModal}
+          handleremoveItemModalSubmit={handleremoveItemModalSubmit}
         />
       </div>
     </CurrentTemperatureUnitContext.Provider>

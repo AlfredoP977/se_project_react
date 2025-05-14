@@ -20,7 +20,7 @@ import Footer from "../Footer/Footer";
 import DeleteItemModal from "../DeleteItemModal/DeleteItemModal";
 //context
 import CurrentTemperatureUnitContext from "../../contexts/CurrentTemperatureUnitContext.jsx";
-import { getItems, deleteItem } from "../../utils/api.js";
+import { getItems, deleteItem, addItem } from "../../utils/api.js";
 
 function App() {
   console.log("App component mounted!");
@@ -61,9 +61,13 @@ function App() {
 
   const handleAddItemModalSubmit = ({ name, imageUrl, weather }) => {
     //update cloth item array
-    setClothingItems([{ name, link: imageUrl, weather }, ...clothingItems]);
-    //close modal
-    closeActiveModal();
+    addItem({ name, link: imageUrl, weather })
+      .then(setClothingItems([{ name, imageUrl, weather }, ...clothingItems]))
+      //close modal
+      .catch((error) => {
+        console.error("API Error:", error);
+      })
+      .finally(() => closeActiveModal());
   };
 
   //   const handleremoveItemModalSubmit = (item) => {
@@ -78,15 +82,15 @@ function App() {
         console.log("item", item);
         console.log("selectedCard", selectedCard);
         // Remove the item from clothingItems
-        selectedCard.remove();
-        clothingItems.filter(selectedCard);
-        evt.target.reset();
-        // Close modal
+        setClothingItems(
+          clothingItems.filter((item) => item._id !== selectedCard._id)
+        );
+        console.log("clothingItems", clothingItems);
       })
       .catch((error) => {
         console.error("API Error:", error);
       })
-      .finally(closeActiveModal());
+      .finally(() => closeActiveModal());
   };
 
   useEffect(() => {

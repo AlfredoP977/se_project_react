@@ -13,19 +13,21 @@ function DeleteItemModal({ isOpen, onClose, handleremoveItemModalSubmit }) {
             Are you sure you want to delete this item?
           </h1>
           <h1 className="modal__delete_prompt">This action is ireversable.</h1>
-          <button
-            className="modal__delete_confirm_delete-btn"
-            onClick={handleremoveItemModalSubmit}
-          >
-            Yes,delete item
-          </button>
-          <button
-            className="modal__delete_Cancel-btn"
-            onClick={onClose}
-            type="button"
-          >
-            Cancel
-          </button>
+          <div className="modal__delete_section-btns">
+            <button
+              className="modal__delete_confirm_delete-btn"
+              onClick={handleremoveItemModalSubmit}
+            >
+              Yes, delete item
+            </button>
+            <button
+              className="modal__delete_Cancel-btn"
+              onClick={onClose}
+              type="button"
+            >
+              Cancel
+            </button>
+          </div>
         </div>
       </div>
     </div>

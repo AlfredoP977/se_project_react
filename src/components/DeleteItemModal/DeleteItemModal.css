@@ -1,10 +1,12 @@
 .modal__delete {
   display: box;
+  direction: row;
+  padding-top: 60px;
 }
 .modal__delete_prompt {
   border: none;
   background: none;
-  padding: 20px 0 0;
+  padding: 0;
   margin: 0;
   font-weight: 700;
   font-size: 20px;
@@ -13,24 +15,28 @@
   text-align: center;
   content: center;
 }
+.modal__delete_section-btns {
+  display: flex;
+  flex-direction: column;
+}
 .modal__delete_confirm_delete-btn {
   border: none;
   background: none;
-  padding: 20px 0 0;
-  margin: 0;
-  font-weight: 700;
-  font-size: 20px;
-  line-height: 24px;
-  letter-spacing: 0;
-}
-.modal__delete_Cancel-btn {
-  border: none;
-  background: none;
-  padding: 20px 0 0;
+  padding: 40px 0 0;
   margin: 0;
   font-weight: 700;
   font-size: 20px;
   line-height: 24px;
   letter-spacing: 0;
   color: #ff4d00;
+}
+.modal__delete_Cancel-btn {
+  border: none;
+  background: none;
+  padding: 24px 0 60px;
+  margin: 0;
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 24px;
+  letter-spacing: 0;
 }

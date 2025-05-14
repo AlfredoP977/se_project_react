@@ -15,10 +15,13 @@ function deleteItem(itemId) {
 }
 
 //post
-function addItem(itemData) {
+function addItem({ name, imageUrl, weather }) {
   return fetch(`${baseUrl}/items`, {
     method: "POST",
-    body: JSON.stringify(itemData),
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({ name, imageUrl, weather }),
   }).then((res) =>
     res.ok ? res.json() : Promise.reject(`Error: ${res.status}`)
   );

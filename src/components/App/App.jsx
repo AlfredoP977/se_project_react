@@ -60,9 +60,13 @@ function App() {
   };
 
   const handleAddItemModalSubmit = ({ name, imageUrl, weather }) => {
+    console.log(" name, imageUrl, weather", name, imageUrl, weather);
     //update cloth item array
-    addItem({ name, link: imageUrl, weather })
-      .then(setClothingItems([{ name, imageUrl, weather }, ...clothingItems]))
+    addItem({ name, imageUrl, weather })
+      .then(
+        setClothingItems([{ name, link: imageUrl, weather }, ...clothingItems]),
+        console.log("clothingItems", clothingItems)
+      )
       //close modal
       .catch((error) => {
         console.error("API Error:", error);
@@ -70,12 +74,6 @@ function App() {
       .finally(() => closeActiveModal());
   };
 
-  //   const handleremoveItemModalSubmit = (item) => {
-  //   //remove cloth item array from clothingItems
-  //   setClothingItems(item);
-  //   //close modal
-  //   closeActiveModal();
-  // };
   const handleremoveItemModalSubmit = () => {
     deleteItem(selectedCard._id)
       .then((item) => {
@@ -106,7 +104,7 @@ function App() {
         console.log("Raw API Data:", JSON.stringify(data, null, 2));
         const filteredData = filterWeatherData(data);
         console.log("Filtered Data:", filteredData);
-        setWeatherData(filteredData); // ✅ Corrected state update
+        setWeatherData(filteredData);
       })
       .catch((error) => {
         console.error("API Error:", error);

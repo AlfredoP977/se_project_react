@@ -29,6 +29,7 @@
   line-height: 24px;
   letter-spacing: 0;
   color: #ff4d00;
+  cursor: pointer;
 }
 .modal__delete_Cancel-btn {
   border: none;
@@ -39,4 +40,5 @@
   font-size: 20px;
   line-height: 24px;
   letter-spacing: 0;
+  cursor: pointer;
 }

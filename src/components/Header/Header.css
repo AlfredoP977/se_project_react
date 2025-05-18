@@ -14,6 +14,7 @@
   width: 89px;
   height: 40px;
   margin-right: 24px;
+  cursor: pointer;
 }
 .header__date-and-location {
   font-size: 20px;
@@ -27,6 +28,7 @@
   font-size: 20px;
   line-height: 24px;
   border: 0;
+  cursor: pointer;
 }
 .header__avatar {
   width: 40px;

@@ -4,6 +4,7 @@
   border-radius: 8px;
   margin: 0;
   padding: 0;
+  cursor: pointer;
 }
 .cards__name {
   margin: 15px 0 0;

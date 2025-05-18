@@ -65,13 +65,14 @@ function App() {
     addItem({ name, imageUrl, weather })
       .then(
         setClothingItems([{ name, link: imageUrl, weather }, ...clothingItems]),
-        console.log("clothingItems", clothingItems)
+        console.log("clothingItems", clothingItems),
+        closeActiveModal()
       )
       //close modal
       .catch((error) => {
         console.error("API Error:", error);
       })
-      .finally(() => closeActiveModal());
+      .finally();
   };
 
   const handleremoveItemModalSubmit = () => {
@@ -83,12 +84,12 @@ function App() {
         setClothingItems(
           clothingItems.filter((item) => item._id !== selectedCard._id)
         );
-        console.log("clothingItems", clothingItems);
+        console.log("clothingItems", clothingItems), closeActiveModal();
       })
       .catch((error) => {
         console.error("API Error:", error);
       })
-      .finally(() => closeActiveModal());
+      .finally();
   };
 
   useEffect(() => {

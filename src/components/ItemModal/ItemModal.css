@@ -8,6 +8,7 @@
 .modal__close_previw {
   background-image: url(../../assets/closeBtnPreview.svg);
   background-color: transparent;
+  cursor: pointer;
 }
 .modal__footer {
   padding: 0 32px 32px;
@@ -41,4 +42,5 @@
   line-height: 24px;
   letter-spacing: 0;
   color: #ff4d00;
+  cursor: pointer;
 }

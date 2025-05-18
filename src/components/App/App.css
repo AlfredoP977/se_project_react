@@ -2,10 +2,14 @@
   src: url("../assets/roboto-regular.woff") format("woff");
   font-family: "Roboto";
 }
-
+@font-face {
+  src: url("../../fonts/CabinetGrotesk-Regular.woff") format("woff");
+  font-family: "CabinetGrotesk";
+}
 .page {
   background-color: #f3f3f3;
   background-size: cover;
+  font-family: CabinetGrotesk;
 }
 .page__content {
   max-width: 1360px;

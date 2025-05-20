@@ -10,15 +10,22 @@ export default function AddItemModal({
   const [name, setName] = useState("");
   const [imageUrl, setImageUrl] = useState("");
   const [weather, setWeather] = useState("");
-  console;
+  const [isButtonDisabled, setIsButtonDisabled] = useState(true);
+
   const handleNameChange = (e) => {
     setName(e.target.value);
+    checkFormCompletion(e.target.value, imageUrl, weather);
   };
   const handleImageUrlChange = (e) => {
     setImageUrl(e.target.value);
+    checkFormCompletion(name, e.target.value, weather);
   };
   const handleWeatherChange = (e) => {
     setWeather(e.target.value);
+    checkFormCompletion(name, imageUrl, e.target.value);
+  };
+  const checkFormCompletion = (name, imageUrl, weather) => {
+    setIsButtonDisabled(!(name && imageUrl && weather));
   };
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -27,6 +34,7 @@ export default function AddItemModal({
     setName("");
     setImageUrl("");
     setWeather("");
+    setIsButtonDisabled(true); //reset button
   };
 
   // console.log(name);
@@ -39,6 +47,7 @@ export default function AddItemModal({
       isOpen={isOpen} //correction
       onClose={onClose}
       onSubmit={handleSubmit}
+      isButtonDisabled={isButtonDisabled}
     >
       <label htmlFor="name" className="modal__label">
         Name

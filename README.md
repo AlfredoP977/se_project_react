@@ -6,7 +6,19 @@ The idea of the application is pretty simple - we make a call to an API, which t
 
 ## Links
 
-- [Figma Design](https://www.figma.com/file/DTojSwldenF9UPKQZd6RRb/Sprint-10%3A-WTWR)
+- [Figma Design 10](https://www.figma.com/file/DTojSwldenF9UPKQZd6RRb/Sprint-10%3A-WTWR)
+
+- [Figma Design 11]https://www.figma.com/design/dQLJwEKasIdspciJAJrCaf/Sprint-11_-WTWR?node-id=311-433&p=f&t=Br8cGSWmq360kAZc-0
+
+# New React technics
+
+sprint 11
+
+- API using React – Fetching and interacting with APIs efficiently within a React app.
+- Mock Server – Simulating a backend to test API calls without relying on an actual server.
+- useEffect – Handling side effects in functional components, like fetching data when a component mounts.
+- useState – Managing component state dynamically within functional components.
+- Getting images using strings – Likely referring to displaying images from URLs stored as strings, useful for dynamically rendering assets.
 
 # React + Vite
 

@@ -119,15 +119,15 @@ function App() {
         console.log("Extracted items:", data.items); // Log items separately
         console.log("API Response Structure:", JSON.stringify(data, null, 2));
         // setClothingItems({ name, link: imageUrl, weather })
-
-        const reformattedArray = data.map(
-          ({ _id, name, weather, imageUrl }) => ({
+        // return an array from id highest to lowest
+        const reformattedArray = data
+          .map(({ _id, name, weather, imageUrl }) => ({
             _id,
             name,
             weather: weather.toLowerCase(), // Standardizing weather formatting
             link: imageUrl, // Renaming 'imageUrl' to 'link'
-          })
-        );
+          }))
+          .reverse(); //reverse added
         setClothingItems(reformattedArray);
         console.log(reformattedArray);
       })

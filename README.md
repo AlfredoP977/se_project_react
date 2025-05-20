@@ -10,6 +10,8 @@ The idea of the application is pretty simple - we make a call to an API, which t
 
 - [Figma Design 11]https://www.figma.com/design/dQLJwEKasIdspciJAJrCaf/Sprint-11_-WTWR?node-id=311-433&p=f&t=Br8cGSWmq360kAZc-0
 
+-[Github]https://github.com/AlfredoP977/se_project_react
+
 # New React technics
 
 sprint 11

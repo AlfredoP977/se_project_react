@@ -26,4 +26,4 @@ function addItem({ name, imageUrl, weather }) {
   }).then(isokay);
 }
 
-export { getItems, deleteItem, addItem };
+export { getItems, deleteItem, addItem, isokay };

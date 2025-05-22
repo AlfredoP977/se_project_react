@@ -1,12 +1,18 @@
+import { isokay } from "./api";
+
 export const getWeather = async ({ latitude, longitude }, APIkey) => {
-  const res = await fetch(
-    `https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&units=imperial&appid=${APIkey}`
-  );
-  if (res.ok) {
-    return res.json();
+  try {
+    const res = await fetch(
+      `https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&units=imperial&appid=${APIkey}`
+    );
+    const data = await isokay(res);
+    return data;
+  } catch (error) {
+    console.error("Error fetching weather:", error);
+    throw error;
   }
-  return await Promise.reject(`Error: ${res.status}`);
 };
+
 const getWeatherType = (temperature) => {
   if (temperature >= 86) {
     return "hot";

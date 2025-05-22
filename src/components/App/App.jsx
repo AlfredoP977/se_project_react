@@ -21,6 +21,7 @@ import DeleteItemModal from "../DeleteItemModal/DeleteItemModal";
 //context
 import CurrentTemperatureUnitContext from "../../contexts/CurrentTemperatureUnitContext.jsx";
 import { getItems, deleteItem, addItem } from "../../utils/api.js";
+import { resetForm } from "../../utils/formUtils";
 
 function App() {
   console.log("App component mounted!");
@@ -66,13 +67,13 @@ function App() {
       .then(
         setClothingItems([{ name, link: imageUrl, weather }, ...clothingItems]),
         console.log("clothingItems", clothingItems),
+        resetForm(setName, setImageUrl, setWeather, setIsButtonDisabled),
         closeActiveModal()
       )
       //close modal
       .catch((error) => {
         console.error("API Error:", error);
-      })
-      .finally();
+      });
   };
 
   const handleremoveItemModalSubmit = () => {
@@ -88,8 +89,7 @@ function App() {
       })
       .catch((error) => {
         console.error("API Error:", error);
-      })
-      .finally();
+      });
   };
 
   useEffect(() => {

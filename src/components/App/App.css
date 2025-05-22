@@ -9,7 +9,7 @@
 .page {
   background-color: #f3f3f3;
   background-size: cover;
-  font-family: CabinetGrotesk;
+  font-family: "CabinetGrotesk", Arial, sans-serif;
 }
 .page__content {
   max-width: 1360px;

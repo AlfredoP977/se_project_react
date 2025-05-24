@@ -9,7 +9,7 @@ function ItemCard({ item, onCardClick }) {
           onCardClick(item);
         }}
         className="cards__img"
-        src={item.link}
+        src={item.imageUrl}
         alt={item.name}
       />
     </li>

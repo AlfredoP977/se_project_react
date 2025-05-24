@@ -1,6 +1,7 @@
 import "./AddItemModal.css";
 import ModalWithForm from "../ModalWithForm/ModalWithForm";
 import { useState } from "react";
+import { resetForm } from "../../utils/formUtils";
 
 export default function AddItemModal({
   onClose,
@@ -29,7 +30,13 @@ export default function AddItemModal({
   };
   const handleSubmit = (e) => {
     e.preventDefault();
-    onAddItemModalSubmit({ name, imageUrl, weather });
+    onAddItemModalSubmit({
+      name,
+      imageUrl,
+      weather,
+      reset: () =>
+        resetForm(setName, setImageUrl, setWeather, setIsButtonDisabled),
+    });
   };
 
   // console.log(name);

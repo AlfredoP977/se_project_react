@@ -8,7 +8,7 @@ function ItemModal({ isOpen, onClose, card, handleDeleteClick }) {
           type="button"
           className="modal__close modal__close_previw"
         ></button>
-        <img src={card.link} alt={card.name} className="modal__image" />
+        <img src={card.imageUrl} alt={card.name} className="modal__image" />
         <div className="modal__footer">
           <div className="modal__footer_top-section">
             <h2 className="modal__caption">{card.name}</h2>

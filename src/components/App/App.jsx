@@ -21,7 +21,6 @@ import DeleteItemModal from "../DeleteItemModal/DeleteItemModal";
 //context
 import CurrentTemperatureUnitContext from "../../contexts/CurrentTemperatureUnitContext.jsx";
 import { getItems, deleteItem, addItem } from "../../utils/api.js";
-import { resetForm } from "../../utils/formUtils";
 
 function App() {
   console.log("App component mounted!");
@@ -60,22 +59,22 @@ function App() {
     setActiveModal("");
   };
 
-  const handleAddItemModalSubmit = ({ name, imageUrl, weather }) => {
+  const handleAddItemModalSubmit = ({ name, imageUrl, weather, reset }) => {
     console.log(" name, imageUrl, weather", name, imageUrl, weather);
     //update cloth item array
     addItem({ name, imageUrl, weather })
-      .then(
-        setClothingItems([{ name, link: imageUrl, weather }, ...clothingItems]),
-        console.log("clothingItems", clothingItems),
-        resetForm(setName, setImageUrl, setWeather, setIsButtonDisabled),
-        closeActiveModal()
-      )
-      //close modal
+      .then((newItem) => {
+        setClothingItems([newItem, ...clothingItems]);
+        reset();
+        closeActiveModal();
+        console.log("clothingItems", clothingItems);
+      })
       .catch((error) => {
         console.error("API Error:", error);
       });
   };
-
+  //rumbo997
+  //alfredo Parodi
   const handleremoveItemModalSubmit = () => {
     deleteItem(selectedCard._id)
       .then((item) => {
@@ -125,7 +124,7 @@ function App() {
             _id,
             name,
             weather: weather.toLowerCase(), // Standardizing weather formatting
-            link: imageUrl, // Renaming 'imageUrl' to 'link'
+            imageUrl,
           }))
           .reverse(); //reverse added
         setClothingItems(reformattedArray);

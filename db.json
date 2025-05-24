@@ -97,16 +97,28 @@
       "_id": 23
     },
     {
-      "name": "crazy person wears sweater",
-      "imageUrl": "https://img-s-msn-com.akamaized.net/tenant/amp/entityid/AA1D7Ulk.img?w=768&h=402&m=6",
-      "weather": "hot",
+      "name": "new add",
+      "imageUrl": "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/wtwr-project/Sunglasses.png?etag=a1bced9e331d36cb278c45df51150432",
+      "weather": "warm",
       "_id": 24
     },
     {
-      "name": "lalas",
-      "imageUrl": "https://encrypted-tbn2.gstatic.com/shopping?q=tbn:ANd9GcTXAZDClMgLIZokZieEBM4uU5DQ91k_ZD2qVQXFoET4g9oyTYtsGiLPTJvH88JZl3UHUB1d1dpIq2RFjYl77Jj985mMYji4qJO-w2D0IsjyVx8oaHydKbIvAlA",
-      "weather": "hot",
+      "name": "new add 2",
+      "imageUrl": "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/wtwr-project/Sunglasses.png?etag=a1bced9e331d36cb278c45df51150432",
+      "weather": "warm",
       "_id": 25
+    },
+    {
+      "name": "al",
+      "imageUrl": "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/wtwr-project/Sunglasses.png?etag=a1bced9e331d36cb278c45df51150432",
+      "weather": "warm",
+      "_id": 26
+    },
+    {
+      "name": "45",
+      "imageUrl": "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/wtwr-project/Sunglasses.png?etag=a1bced9e331d36cb278c45df51150432",
+      "weather": "warm",
+      "_id": 27
     }
   ]
 }

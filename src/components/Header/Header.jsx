@@ -5,7 +5,14 @@ import ToggleSwitch from "../ToggleSwitch/ToggleSwitch";
 
 import { Link } from "react-router-dom";
 
-function Header({ handleAddClick, weatherData }) {
+function Header({
+  handleRegisterClick,
+  handleLoginClick,
+  handleAddClick,
+  weatherData,
+  isLoggedIn,
+  userData,
+}) {
   const currentDate = new Date().toLocaleString("default", {
     month: "long",
     day: "numeric",
@@ -22,21 +29,43 @@ function Header({ handleAddClick, weatherData }) {
 
       <div className="header__user-container">
         <ToggleSwitch />
-        <button
-          onClick={handleAddClick}
-          type="button"
-          className="header__add-clothes-btn"
-        >
-          + Add clothes
-        </button>
-        <Link to={"/profile"} className="header__link">
-          <p className="header__username">Terrence Tegegne</p>
-          <img
-            src={defaultAvatar}
-            alt="Terrence Tegegne"
-            className="header__avatar"
-          />
-        </Link>
+        {console.log(isLoggedIn, "isLoggedIn")}
+        {isLoggedIn ? (
+          <>
+            <button
+              onClick={handleAddClick}
+              type="button"
+              className="header__add-clothes-btn"
+            >
+              + Add clothes
+            </button>
+            <Link to={"/profile"} className="header__link">
+              <p className="header__username">{userData.name}</p>
+              <img
+                src={userData.avatar}
+                alt="Terrence Tegegne"
+                className="header__avatar"
+              />
+            </Link>
+          </>
+        ) : (
+          <>
+            <button
+              onClick={handleRegisterClick}
+              type="button"
+              className="header__add-clothes-btn"
+            >
+              Sign Up
+            </button>
+            <button
+              onClick={handleLoginClick}
+              type="button"
+              className="header__add-clothes-btn"
+            >
+              Log In
+            </button>
+          </>
+        )}
       </div>
     </header>
   );

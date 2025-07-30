@@ -1,5 +1,4 @@
 import "./ModalWithForm.css";
-
 function ModalWithForm({
   children,
   buttonText,
@@ -8,6 +7,10 @@ function ModalWithForm({
   onClose,
   onSubmit,
   isButtonDisabled,
+  sideButton,
+  tiltleSideButton,
+  handleSideButtonClick,
+  activeModal,
 }) {
   return (
     <div className={`modal ${isOpen && "modal_opened"}`}>
@@ -20,13 +23,24 @@ function ModalWithForm({
         ></button>
         <form onSubmit={onSubmit} className="modal__form">
           {children}
-          <button
-            disabled={isButtonDisabled}
-            type="submit"
-            className="modal__submit"
-          >
-            {buttonText}
-          </button>
+          <div className="modal__buttons">
+            <button
+              disabled={isButtonDisabled}
+              type="submit"
+              className="modal__submit"
+            >
+              {buttonText}
+            </button>
+            {/* Conditionally render extra buttons */}
+            {sideButton === true && (
+              <p
+                onClick={handleSideButtonClick}
+                className="modal__or-registration"
+              >
+                {tiltleSideButton}
+              </p>
+            )}
+          </div>
         </form>
       </div>
     </div>

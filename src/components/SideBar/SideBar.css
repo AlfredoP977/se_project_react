@@ -26,6 +26,7 @@
   cursor: pointer;
   display: flex;
   justify-content: flex-start;
+  max-width: 171px;
 }
 .sideBar_logOut {
   margin-top: 8px;

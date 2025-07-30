@@ -6,11 +6,16 @@ function Profile({
   clothingItems,
   handleAddClick,
   handleLogOutClick,
-  userData,
+  handleUpdateClick,
+  currentUser,
 }) {
   return (
     <div className="profile">
-      <SideBar handleLogOutClick={handleLogOutClick} userData={userData} />
+      <SideBar
+        handleLogOutClick={handleLogOutClick}
+        handleUpdateClick={handleUpdateClick}
+        currentUser={currentUser}
+      />
 
       <ClothesSection
         handleAddClick={handleAddClick}

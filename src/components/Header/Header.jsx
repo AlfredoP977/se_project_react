@@ -1,5 +1,4 @@
 import "./Header.css";
-import defaultAvatar from "../../assets/defaultAvatar.svg";
 import weatherLogo from "../../assets/weatherLogo.svg";
 import ToggleSwitch from "../ToggleSwitch/ToggleSwitch";
 
@@ -11,7 +10,7 @@ function Header({
   handleAddClick,
   weatherData,
   isLoggedIn,
-  userData,
+  currentUser,
 }) {
   const currentDate = new Date().toLocaleString("default", {
     month: "long",
@@ -40,9 +39,9 @@ function Header({
               + Add clothes
             </button>
             <Link to={"/profile"} className="header__link">
-              <p className="header__username">{userData.name}</p>
+              <p className="header__username">{currentUser.name}</p>
               <img
-                src={userData.avatar}
+                src={currentUser.avatar}
                 alt="Terrence Tegegne"
                 className="header__avatar"
               />

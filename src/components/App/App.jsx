@@ -18,7 +18,7 @@ import ItemModal from "../ItemModal/ItemModal";
 import DeleteItemModal from "../DeleteItemModal/DeleteItemModal";
 import LoginModal from "../LoginModal/LoginModal.jsx";
 import RegisterModal from "../RegisterModal/RegisterModal.jsx";
-import UpdateModal from "../UpdateModal/updateModal.jsx";
+import EditProfileModal from "../EditProfileModal/EditProfileModal.jsx";
 
 //context
 import CurrentTemperatureUnitContext from "../../contexts/CurrentTemperatureUnitContext.jsx";
@@ -31,6 +31,8 @@ import {
   signIn,
   getUser,
   updateUser,
+  addCardLike,
+  removeCardLike,
 } from "../../utils/api.js";
 
 //login and register
@@ -92,7 +94,7 @@ function App() {
     navigate("/");
     setClothingItems([]);
     setIsLoggedIn(false);
-    setCurrentUser({ name: "", email: "", avatar: "", _id: "" });
+    setCurrentUser({ name: "", email: "", avatar: "", _id: "", likes: "" });
     removeToken();
   };
 
@@ -111,13 +113,12 @@ function App() {
   };
   //register
   const onRegisterModalSubmit = ({ name, avatar, email, password }) => {
-    console.log(
-      " name, avatar, email, password",
+    console.log(" name, avatar, email, password", {
       name,
       avatar,
       email,
-      password
-    );
+      password,
+    });
     signUp({ name, avatar, email, password })
       .then(() => {
         setActiveModal("login");
@@ -135,9 +136,10 @@ function App() {
         if (data.token) {
           setToken(data.token);
           getUser(data.token)
-            .then(({ name, email, avatar, _id }) => {
+            .then(({ name, email, avatar, _id, likes }) => {
               setIsLoggedIn(true);
-              setCurrentUser({ name, email, avatar, _id });
+              setCurrentUser({ name, email, avatar, _id, likes });
+              console.log("User", currentUser);
             })
             .catch(console.error);
           closeActiveModal();
@@ -155,8 +157,8 @@ function App() {
     updateUser({ name, avatar }, jwt)
       .then(() => {
         getUser(jwt)
-          .then(({ name, email, avatar, _id }) => {
-            setCurrentUser({ name, email, avatar, _id });
+          .then(({ name, email, avatar, _id, likes }) => {
+            setCurrentUser({ name, email, avatar, _id, likes });
           })
           .catch(console.error);
         closeActiveModal();
@@ -205,6 +207,34 @@ function App() {
       });
   };
 
+  const handleCardLike = (id, isLiked) => {
+    console.log("liked? handleCardLike", isLiked);
+    const jwt = getToken();
+    if (!jwt) {
+      return;
+    }
+    // Check if this card is not currently liked
+    !isLiked
+      ? // if so, send a request to add the user's id to the card's likes array
+        // the first argument is the card's id
+        addCardLike(id, jwt)
+          .then((updatedCard) => {
+            setClothingItems((cards) =>
+              cards.map((item) => (item._id === id ? updatedCard : item))
+            );
+          })
+          .catch((err) => console.log(err))
+      : // if not, send a request to remove the user's id from the card's likes array
+        // the first argument is the card's id
+        removeCardLike(id, jwt)
+          .then((updatedCard) => {
+            setClothingItems((cards) =>
+              cards.map((item) => (item._id === id ? updatedCard : item))
+            );
+          })
+          .catch((err) => console.log(err));
+  };
+
   useEffect(() => {
     console.log("useEffect is running!");
   }, []);
@@ -232,9 +262,10 @@ function App() {
       return;
     }
     getUser(jwt)
-      .then(({ name, email, avatar, _id }) => {
+      .then(({ name, email, avatar, _id, likes }) => {
         setIsLoggedIn(true);
-        setCurrentUser({ name, email, avatar, _id });
+        setCurrentUser({ name, email, avatar, _id, likes });
+        console.log("User out side log in", { currentUser });
       })
       .catch(console.error);
   }, []);
@@ -250,12 +281,13 @@ function App() {
         const currentUserId = currentUser._id;
         const reformattedArray = data
           .filter((item) => item.owner === currentUserId)
-          .map(({ _id, name, weather, imageUrl, owner }) => ({
+          .map(({ _id, name, weather, imageUrl, owner, likes }) => ({
             _id,
             name,
             weather: weather.toLowerCase(), // Standardizing weather formatting
             imageUrl,
             owner,
+            likes,
           }))
           .reverse(); //reverse added
         setClothingItems(reformattedArray);
@@ -286,6 +318,7 @@ function App() {
                   <Main
                     currentTemperatureUnit={currentTemperatureUnit}
                     weatherData={weatherData}
+                    handleCardLike={handleCardLike}
                     handleCardClick={handleCardClick}
                     clothingItems={clothingItems}
                   />
@@ -332,7 +365,7 @@ function App() {
             onClose={closeActiveModal}
             onLoginModalSubmit={onLoginModalSubmit}
           />
-          <UpdateModal
+          <EditProfileModal
             activeModal={activeModal}
             isOpen={activeModal === "update"}
             onClose={closeActiveModal}

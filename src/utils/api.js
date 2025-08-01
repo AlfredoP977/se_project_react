@@ -77,6 +77,25 @@ function updateUser({ name, avatar }, token) {
     body: JSON.stringify({ name, avatar }),
   }).then(isokay);
 }
+
+function addCardLike(itemId, token) {
+  return fetch(`${baseUrl}/items/${itemId}/likes`, {
+    method: "put",
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${token}`,
+    },
+  }).then(isokay);
+}
+function removeCardLike(itemId, token) {
+  return fetch(`${baseUrl}/items/${itemId}/likes`, {
+    method: "DELETE",
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${token}`,
+    },
+  }).then(isokay);
+}
 export {
   getItems,
   deleteItem,
@@ -86,4 +105,6 @@ export {
   isokay,
   getUser,
   updateUser,
+  addCardLike,
+  removeCardLike,
 };

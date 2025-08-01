@@ -8,6 +8,7 @@ function Main({
   weatherData,
   handleCardClick,
   clothingItems,
+  handleCardLike,
 }) {
   return (
     <main>
@@ -28,6 +29,7 @@ function Main({
             .map((item) => {
               return (
                 <ItemCard
+                  handleCardLike={handleCardLike}
                   key={item._id}
                   item={item}
                   onCardClick={handleCardClick}

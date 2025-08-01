@@ -1,23 +1,31 @@
-import "./updateModal.css";
+import "./EditProfileModal.css";
 import ModalWithForm from "../ModalWithForm/ModalWithForm";
-import { useState } from "react";
+import { useContext, useState, useEffect } from "react";
 import { resetForm } from "../../utils/formUtils";
+import CurrentUserContext from "../../contexts/CurrentUserContext";
 
-export default function UpdateModal({
-  onClose,
-  isOpen,
-  onUpdateModalSubmit,
-  currentUser,
-}) {
-  const [name, setName] = useState(currentUser.name);
-  const [avatar, setAvatar] = useState(currentUser.avatar);
+export default function UpdateModal({ onClose, isOpen, onUpdateModalSubmit }) {
+  const currentUser = useContext(CurrentUserContext);
+  const [name, setName] = useState("");
+  const [avatar, setAvatar] = useState("");
+
+  useEffect(() => {
+    if (currentUser) {
+      setName(currentUser.name);
+      setAvatar(currentUser.avatar);
+    }
+  }, [currentUser]);
 
   const handleSubmit = (e) => {
     e.preventDefault();
     onUpdateModalSubmit({
       name,
       avatar,
-      reset: () => resetForm(),
+      reset: () => {
+        setName("");
+        setAvatar("");
+        resetForm();
+      },
     });
   };
 
@@ -40,7 +48,7 @@ export default function UpdateModal({
           value={name}
           onChange={(e) => setName(e.target.value)}
           className="modal__input"
-          placeholder={currentUser.name}
+          placeholder={name}
           required
           minLength="1"
           maxLength="30"
@@ -54,7 +62,7 @@ export default function UpdateModal({
           value={avatar}
           onChange={(e) => setAvatar(e.target.value)}
           className="modal__input"
-          placeholder={currentUser.avatar}
+          placeholder={avatar}
           required
         />
       </label>

@@ -7,14 +7,12 @@ function Profile({
   handleAddClick,
   handleLogOutClick,
   handleUpdateClick,
-  currentUser,
 }) {
   return (
     <div className="profile">
       <SideBar
         handleLogOutClick={handleLogOutClick}
         handleUpdateClick={handleUpdateClick}
-        currentUser={currentUser}
       />
 
       <ClothesSection

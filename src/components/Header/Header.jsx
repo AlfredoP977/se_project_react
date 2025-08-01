@@ -1,7 +1,8 @@
 import "./Header.css";
 import weatherLogo from "../../assets/weatherLogo.svg";
 import ToggleSwitch from "../ToggleSwitch/ToggleSwitch";
-
+import CurrentUserContext from "../../contexts/CurrentUserContext";
+import { useContext } from "react";
 import { Link } from "react-router-dom";
 
 function Header({
@@ -10,8 +11,8 @@ function Header({
   handleAddClick,
   weatherData,
   isLoggedIn,
-  currentUser,
 }) {
+  const { name, avatar } = useContext(CurrentUserContext);
   const currentDate = new Date().toLocaleString("default", {
     month: "long",
     day: "numeric",
@@ -39,9 +40,9 @@ function Header({
               + Add clothes
             </button>
             <Link to={"/profile"} className="header__link">
-              <p className="header__username">{currentUser.name}</p>
+              <p className="header__username">{name}</p>
               <img
-                src={currentUser.avatar}
+                src={avatar}
                 alt="Terrence Tegegne"
                 className="header__avatar"
               />

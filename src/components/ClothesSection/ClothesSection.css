@@ -8,25 +8,23 @@
   margin: 0;
   padding: 0;
   display: flex;
-  direction: row;
   flex-wrap: wrap;
   gap: 20px;
 }
 .clothes_section_title {
   display: flex;
-  direction: row;
 }
 .clothes_section_add-btn {
   margin-left: 20px;
   border: none;
   font-weight: 700;
-  size: 20px;
+  font-size: 20px;
   line-height: 100%;
   letter-spacing: 0%;
 }
 .clothes_section_header {
   font-weight: 700;
-  size: 20px;
+  font-size: 20px;
   line-height: 100%;
   letter-spacing: 0%;
   color: #000;

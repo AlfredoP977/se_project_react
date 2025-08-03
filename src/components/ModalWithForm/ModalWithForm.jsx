@@ -10,7 +10,6 @@ function ModalWithForm({
   sideButton,
   tiltleSideButton,
   handleSideButtonClick,
-  activeModal,
 }) {
   return (
     <div className={`modal ${isOpen && "modal_opened"}`}>

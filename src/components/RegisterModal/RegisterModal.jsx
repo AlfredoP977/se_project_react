@@ -1,6 +1,6 @@
 import "./RegisterModal.css";
 import ModalWithForm from "../ModalWithForm/ModalWithForm";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { resetForm } from "../../utils/formUtils";
 
 export default function RegisterModal({
@@ -14,7 +14,12 @@ export default function RegisterModal({
   const [password, setPassword] = useState("");
   const [name, setName] = useState("");
   const [avatar, setAvatar] = useState("");
-  // const [isButtonDisabled, setIsButtonDisabled] = useState(true);
+  const [isButtonDisabled, setIsButtonDisabled] = useState(true);
+
+  useEffect(() => {
+    const isComplete = email && password && name && avatar;
+    setIsButtonDisabled(!isComplete);
+  }, [email, password, name, avatar]);
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -41,12 +46,12 @@ export default function RegisterModal({
       handleSideButtonClick={handleSideButtonClick}
       activeModal={activeModal}
       // fix add disable feature
-      // isButtonDisabled={isButtonDisabled}
+      isButtonDisabled={isButtonDisabled}
     >
       <label htmlFor="email" className="modal__label">
         Email
         <input
-          id="email"
+          id="email__register"
           type="email"
           value={email}
           onChange={(e) => setEmail(e.target.value)}

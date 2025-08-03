@@ -1,6 +1,6 @@
 import "./LoginModal.css";
 import ModalWithForm from "../ModalWithForm/ModalWithForm";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { resetForm } from "../../utils/formUtils";
 
 export default function LoginModal({
@@ -12,6 +12,12 @@ export default function LoginModal({
 }) {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [isButtonDisabled, setIsButtonDisabled] = useState(true);
+
+  useEffect(() => {
+    const isComplete = email && password;
+    setIsButtonDisabled(!isComplete);
+  }, [email, password]);
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -36,13 +42,14 @@ export default function LoginModal({
       tiltleSideButton="or Sign Up"
       handleSideButtonClick={handleSideButtonClick}
       activeModal={activeModal}
+      isButtonDisabled={isButtonDisabled}
     >
       <label htmlFor="email" className="modal__label">
         Email
         <input
           type="email"
           className="modal__input"
-          id="email"
+          id="emai_login"
           value={email}
           onChange={(e) => setEmail(e.target.value)}
           placeholder="Email"

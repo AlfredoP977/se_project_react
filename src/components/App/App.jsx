@@ -21,6 +21,7 @@ import RegisterModal from "../RegisterModal/RegisterModal.jsx";
 import EditProfileModal from "../EditProfileModal/EditProfileModal.jsx";
 
 //context
+import ProtectedRoute from "../../contexts/ProtectedRoute.jsx";
 import CurrentTemperatureUnitContext from "../../contexts/CurrentTemperatureUnitContext.jsx";
 import CurrentUserContext from "../../contexts/CurrentUserContext.jsx";
 import {
@@ -121,7 +122,7 @@ function App() {
     });
     signUp({ name, avatar, email, password })
       .then(() => {
-        setActiveModal("login");
+        onLoginModalSubmit({ email, password });
       })
       .catch((error) => {
         console.error("API Error:", error);
@@ -143,6 +144,7 @@ function App() {
             })
             .catch(console.error);
           closeActiveModal();
+          navigate("/");
         }
       })
       .catch((error) => {
@@ -325,27 +327,17 @@ function App() {
                 }
               />
               <Route
-                path="/loggedin"
-                element={
-                  // pass clothingItems prop
-                  <Main
-                    currentTemperatureUnit={currentTemperatureUnit}
-                    weatherData={weatherData}
-                    handleCardClick={handleCardClick}
-                    clothingItems={clothingItems}
-                  />
-                }
-              />
-              <Route
                 path="/profile"
                 element={
-                  <Profile
-                    handleAddClick={handleAddClick}
-                    handleUpdateClick={handleUpdateClick}
-                    clothingItems={clothingItems}
-                    handleCardClick={handleCardClick}
-                    handleLogOutClick={handleLogOutClick}
-                  />
+                  <ProtectedRoute isLoggedIn={isLoggedIn}>
+                    <Profile
+                      handleAddClick={handleAddClick}
+                      handleUpdateClick={handleUpdateClick}
+                      clothingItems={clothingItems}
+                      handleCardClick={handleCardClick}
+                      handleLogOutClick={handleLogOutClick}
+                    />
+                  </ProtectedRoute>
                 }
               />
             </Routes>

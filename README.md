@@ -12,9 +12,9 @@ The idea of the application is pretty simple - we make a call to an API, which t
 
 - [Figma Design 14](https://www.figma.com/file/bfVOvqlLmoKZ5lpro8WWBe/Sprint-14_-WTWR?t=3hvVWRz9LUFsxyNn-6)
 
--[FrontEnd Github](https://github.com/AlfredoP977/se_project_react)
+- [FrontEnd Github](https://github.com/AlfredoP977/se_project_react)
 
--[BackEnd Github](https://github.com/AlfredoP977/se_project_express)
+- [BackEnd Github](https://github.com/AlfredoP977/se_project_express)
 
 # New React technics
 

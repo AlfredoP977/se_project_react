@@ -95,7 +95,7 @@ function App() {
     navigate("/");
     setClothingItems([]);
     setIsLoggedIn(false);
-    setCurrentUser({ name: "", email: "", avatar: "", _id: "", likes: "" });
+    setCurrentUser({ name: "", email: "", avatar: "", _id: "" });
     removeToken();
   };
 
@@ -137,9 +137,9 @@ function App() {
         if (data.token) {
           setToken(data.token);
           getUser(data.token)
-            .then(({ name, email, avatar, _id, likes }) => {
+            .then(({ name, email, avatar, _id }) => {
               setIsLoggedIn(true);
-              setCurrentUser({ name, email, avatar, _id, likes });
+              setCurrentUser({ name, email, avatar, _id });
               console.log("User", currentUser);
             })
             .catch(console.error);
@@ -159,8 +159,8 @@ function App() {
     updateUser({ name, avatar }, jwt)
       .then(() => {
         getUser(jwt)
-          .then(({ name, email, avatar, _id, likes }) => {
-            setCurrentUser({ name, email, avatar, _id, likes });
+          .then(({ name, email, avatar, _id }) => {
+            setCurrentUser({ name, email, avatar, _id });
           })
           .catch(console.error);
         closeActiveModal();
@@ -209,8 +209,8 @@ function App() {
       });
   };
 
-  const handleCardLike = (id, isLiked) => {
-    console.log("liked? handleCardLike", isLiked);
+  const handleCardLike = ({ id, isLiked }) => {
+    console.log("handleCardLike", "isLiked", isLiked, "id", id);
     const jwt = getToken();
     if (!jwt) {
       return;
@@ -264,9 +264,9 @@ function App() {
       return;
     }
     getUser(jwt)
-      .then(({ name, email, avatar, _id, likes }) => {
+      .then(({ name, email, avatar, _id }) => {
         setIsLoggedIn(true);
-        setCurrentUser({ name, email, avatar, _id, likes });
+        setCurrentUser({ name, email, avatar, _id });
         console.log("User out side log in", { currentUser });
       })
       .catch(console.error);
@@ -289,7 +289,7 @@ function App() {
             weather: weather.toLowerCase(), // Standardizing weather formatting
             imageUrl,
             owner,
-            likes,
+            likes: likes.includes(currentUserId), // returns true or false
           }))
           .reverse(); //reverse added
         setClothingItems(reformattedArray);
@@ -333,6 +333,7 @@ function App() {
                     <Profile
                       handleAddClick={handleAddClick}
                       handleUpdateClick={handleUpdateClick}
+                      handleCardLike={handleCardLike}
                       clothingItems={clothingItems}
                       handleCardClick={handleCardClick}
                       handleLogOutClick={handleLogOutClick}

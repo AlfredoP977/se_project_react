@@ -25,8 +25,7 @@
   margin: 0;
   padding: 0;
 }
-.card__like-btn {
-  background-image: url(../../assets/unLiked.svg);
+.cards__like-icon {
   background-size: cover;
   margin-left: 10px;
   height: 18px;
@@ -36,31 +35,4 @@
   background-color: transparent;
   cursor: pointer;
   margin-top: 20px;
-}
-.card__like-btn {
-  background-image: url(../../assets/liked.svg);
-}
-.card__like-label {
-  display: inline-block;
-  cursor: pointer;
-  margin-left: 10px;
-  margin-top: 20px;
-}
-
-.card__like-checkbox {
-  display: none; /* Hide the actual checkbox */
-}
-
-.card__like-icon {
-  display: inline-block;
-  height: 18px;
-  width: 20px;
-  background-size: cover;
-  background-repeat: no-repeat;
-  background-image: url("../../assets/unLiked.svg");
-}
-
-/* When checkbox is checked */
-.card__like-checkbox:checked + .card__like-icon {
-  background-image: url("../../assets/liked.svg");
 }

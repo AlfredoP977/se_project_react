@@ -11,8 +11,17 @@ function ModalWithForm({
   tiltleSideButton,
   handleSideButtonClick,
 }) {
+  const handleOverlayClick = (e) => {
+    if (e.target.classList.contains(`modal ${isOpen && "modal_opened"}`)) {
+      onClose();
+    }
+  };
+
   return (
-    <div className={`modal ${isOpen && "modal_opened"}`}>
+    <div
+      className={`modal ${isOpen && "modal_opened"}`}
+      onClick={handleOverlayClick}
+    >
       <div className="modal__content">
         <h2 className="modal__title">{title}</h2>
         <button

@@ -4,12 +4,11 @@ function isokay(res) {
   return res.ok ? res.json() : Promise.reject(`Error:${res.status}`);
 }
 
-function getItems(token) {
+function getItems() {
   return fetch(`${baseUrl}/items`, {
     method: "GET",
     headers: {
       "Content-Type": "application/json",
-      Authorization: `Bearer ${token}`,
     },
   }).then(isokay);
 }

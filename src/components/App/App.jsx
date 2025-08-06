@@ -61,11 +61,6 @@ function App() {
     isDay: false,
   });
 
-  useEffect(() => {
-    console.log("Updated weather data:", weatherData);
-  }, [weatherData]);
-
-  //
   const [clothingItems, setClothingItems] = useState([]);
   const [activeModal, setActiveModal] = useState("");
   const [selectedCard, setSelectedCard] = useState({});
@@ -93,7 +88,6 @@ function App() {
   const navigate = useNavigate();
   const handleLogOutClick = () => {
     navigate("/");
-    setClothingItems([]);
     setIsLoggedIn(false);
     setCurrentUser({ name: "", email: "", avatar: "", _id: "" });
     removeToken();
@@ -181,7 +175,6 @@ function App() {
         setClothingItems([newItem, ...clothingItems]);
         reset();
         closeActiveModal();
-        console.log("clothingItems", clothingItems);
       })
       .catch((error) => {
         console.error("API Error:", error);
@@ -198,7 +191,6 @@ function App() {
       .then((item) => {
         console.log("item", item);
         console.log("selectedCard", selectedCard);
-        // Remove the item from clothingItems
         setClothingItems(
           clothingItems.filter((item) => item._id !== selectedCard._id)
         );
@@ -215,20 +207,15 @@ function App() {
     if (!jwt) {
       return;
     }
-    // Check if this card is not currently liked
     !isLiked
-      ? // if so, send a request to add the user's id to the card's likes array
-        // the first argument is the card's id
-        addCardLike(id, jwt)
+      ? addCardLike(id, jwt)
           .then((updatedCard) => {
             setClothingItems((cards) =>
               cards.map((item) => (item._id === id ? updatedCard : item))
             );
           })
           .catch((err) => console.log(err))
-      : // if not, send a request to remove the user's id from the card's likes array
-        // the first argument is the card's id
-        removeCardLike(id, jwt)
+      : removeCardLike(id, jwt)
           .then((updatedCard) => {
             setClothingItems((cards) =>
               cards.map((item) => (item._id === id ? updatedCard : item))
@@ -236,11 +223,7 @@ function App() {
           })
           .catch((err) => console.log(err));
   };
-
-  useEffect(() => {
-    console.log("useEffect is running!");
-  }, []);
-
+  //get weather data
   useEffect(() => {
     getWeather(coordinates, APIkey)
       .then((data) => {
@@ -256,7 +239,7 @@ function App() {
         console.error("API Error:", error);
       });
   }, []);
-
+  //get user info
   useEffect(() => {
     const jwt = getToken();
 
@@ -271,33 +254,32 @@ function App() {
       })
       .catch(console.error);
   }, []);
+
+  //users cloths
   useEffect(() => {
-    const jwt = getToken();
-
-    if (!jwt) {
-      return;
-    }
-
-    getItems(jwt)
+    getItems()
       .then((data) => {
-        const currentUserId = currentUser._id;
         const reformattedArray = data
-          .filter((item) => item.owner === currentUserId)
           .map(({ _id, name, weather, imageUrl, owner, likes }) => ({
             _id,
             name,
             weather: weather.toLowerCase(), // Standardizing weather formatting
             imageUrl,
             owner,
-            likes: likes.includes(currentUserId), // returns true or false
+            likes,
           }))
           .reverse(); //reverse added
         setClothingItems(reformattedArray);
-        console.log(reformattedArray);
+        console.log("reformattedArray", reformattedArray);
+        console.log(
+          "reformattedArray.filter((item) => item.owner === currentUserId)",
+          reformattedArray.filter((item) => item.owner === currentUserId)
+        );
       })
       .catch(console.error);
     //set clothing items
-  }, [currentUser._id]);
+  }, []);
+
   return (
     <CurrentTemperatureUnitContext.Provider
       value={{ currentTemperatureUnit, handleToggleSwitchChange }}

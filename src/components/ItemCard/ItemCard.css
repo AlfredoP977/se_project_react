@@ -36,3 +36,8 @@
   cursor: pointer;
   margin-top: 20px;
 }
+.cards__like-button {
+  border: none;
+  background: none;
+  padding: 0;
+}

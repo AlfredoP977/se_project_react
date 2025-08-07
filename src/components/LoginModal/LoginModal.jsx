@@ -1,4 +1,3 @@
-import "./LoginModal.css";
 import ModalWithForm from "../ModalWithForm/ModalWithForm";
 import { useEffect, useState } from "react";
 import { resetForm } from "../../utils/formUtils";
@@ -44,12 +43,12 @@ export default function LoginModal({
       activeModal={activeModal}
       isButtonDisabled={isButtonDisabled}
     >
-      <label htmlFor="email" className="modal__label">
+      <label htmlFor="LoginEmail" className="modal__label">
         Email
         <input
           type="email"
           className="modal__input"
-          id="emai_login"
+          id="LoginEmail"
           value={email}
           onChange={(e) => setEmail(e.target.value)}
           placeholder="Email"
@@ -58,12 +57,12 @@ export default function LoginModal({
           maxLength="30"
         />
       </label>
-      <label htmlFor="password" className="modal__label">
+      <label htmlFor="LoginPassword" className="modal__label">
         Password
         <input
           type="password"
           className="modal__input"
-          id="password"
+          id="LoginPassword"
           value={password}
           onChange={(e) => setPassword(e.target.value)}
           placeholder="Password"

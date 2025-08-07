@@ -16,6 +16,8 @@
   padding: 2px 12px;
   border-radius: 4px;
   background-color: #fff;
+  max-width: 200px;
+  overflow: hidden;
 }
 .card-container {
   display: flex;

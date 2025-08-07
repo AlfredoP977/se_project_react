@@ -1,7 +1,5 @@
-import "./RegisterModal.css";
 import ModalWithForm from "../ModalWithForm/ModalWithForm";
 import { useState, useEffect } from "react";
-import { resetForm } from "../../utils/formUtils";
 
 export default function RegisterModal({
   onClose,
@@ -31,27 +29,23 @@ export default function RegisterModal({
     });
   };
 
-  // console.log(name);
-  // console.log(weather);
-
   return (
     <ModalWithForm
       buttonText="Next"
       title="Sign up"
-      isOpen={isOpen} //correction
+      isOpen={isOpen}
       onClose={onClose}
       onSubmit={handleSubmit}
       sideButton={true}
       tiltleSideButton="or log in"
       handleSideButtonClick={handleSideButtonClick}
       activeModal={activeModal}
-      // fix add disable feature
       isButtonDisabled={isButtonDisabled}
     >
-      <label htmlFor="email" className="modal__label">
+      <label htmlFor="registerEmail" className="modal__label">
         Email
         <input
-          id="email__register"
+          id="registerEmail"
           type="email"
           value={email}
           onChange={(e) => setEmail(e.target.value)}
@@ -62,10 +56,10 @@ export default function RegisterModal({
           maxLength="30"
         />
       </label>
-      <label htmlFor="password" className="modal__label">
+      <label htmlFor="registerPassword" className="modal__label">
         Password
         <input
-          id="password"
+          id="registerPassword"
           type="password"
           value={password}
           onChange={(e) => setPassword(e.target.value)}
@@ -76,10 +70,10 @@ export default function RegisterModal({
           maxLength="30"
         />
       </label>
-      <label htmlFor="name" className="modal__label">
+      <label htmlFor="registerName" className="modal__label">
         Name
         <input
-          id="name"
+          id="registerName"
           type="text"
           value={name}
           onChange={(e) => setName(e.target.value)}
@@ -90,10 +84,10 @@ export default function RegisterModal({
           maxLength="30"
         />
       </label>
-      <label htmlFor="avatar" className="modal__label">
+      <label htmlFor="registerAvatar" className="modal__label">
         Avatar Url
         <input
-          id="avatar"
+          id="registerAvatar"
           type="url"
           value={avatar}
           onChange={(e) => setAvatar(e.target.value)}

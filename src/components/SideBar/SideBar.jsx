@@ -1,6 +1,6 @@
 import "./SideBar.css";
 import CurrentUserContext from "../../contexts/CurrentUserContext";
-import { useContext, useState, useEffect } from "react";
+import { useContext } from "react";
 
 function SideBar({ handleUpdateClick, handleLogOutClick }) {
   const currentUser = useContext(CurrentUserContext);

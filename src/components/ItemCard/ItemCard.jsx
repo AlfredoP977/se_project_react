@@ -2,10 +2,12 @@ import "./ItemCard.css";
 import likedIcon from "../../assets/liked.svg";
 import unLikedIcon from "../../assets/unLiked.svg";
 import CurrentUserContext from "../../contexts/CurrentUserContext";
+import IsLoggedInContext from "../../contexts/isLoggedInContext";
 import { useContext } from "react";
 
 function ItemCard({ item, onCardClick, handleCardLike }) {
   const currentUser = useContext(CurrentUserContext);
+  const isLoggedIn = useContext(IsLoggedInContext);
   console.log(item.likes, "item.likes");
   const isLiked = item.likes.includes(currentUser._id);
   const id = item._id;
@@ -15,17 +17,19 @@ function ItemCard({ item, onCardClick, handleCardLike }) {
     <li className="card-container">
       <div className="card__title">
         <h2 className="cards__name">{item.name}</h2>
-        <button
-          onClick={() => handleCardLike({ id, isLiked })}
-          className="cards__like-button"
-          aria-label={isLiked ? "Unlike item" : "Like item"}
-        >
-          <img
-            className="cards__like-icon"
-            src={isLiked ? likedIcon : unLikedIcon}
-            alt=""
-          />
-        </button>
+        {isLoggedIn === true && (
+          <button
+            onClick={() => handleCardLike({ id, isLiked })}
+            className="cards__like-button"
+            aria-label={isLiked ? "Unlike item" : "Like item"}
+          >
+            <img
+              className="cards__like-icon"
+              src={isLiked ? likedIcon : unLikedIcon}
+              alt=""
+            />
+          </button>
+        )}
       </div>
 
       <img

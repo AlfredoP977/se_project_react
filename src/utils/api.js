@@ -1,6 +1,6 @@
 const baseUrl = "http://localhost:3001";
 
-function isokay(res) {
+function isOkay(res) {
   return res.ok ? res.json() : Promise.reject(`Error:${res.status}`);
 }
 
@@ -10,7 +10,7 @@ function getItems() {
     headers: {
       "Content-Type": "application/json",
     },
-  }).then(isokay);
+  }).then(isOkay);
 }
 
 function getUser(token) {
@@ -20,7 +20,7 @@ function getUser(token) {
       "Content-Type": "application/json",
       Authorization: `Bearer ${token}`,
     },
-  }).then(isokay);
+  }).then(isOkay);
 }
 
 //delete
@@ -30,7 +30,7 @@ function deleteItem(itemId, token) {
     headers: {
       Authorization: `Bearer ${token}`,
     },
-  }).then(isokay);
+  }).then(isOkay);
 }
 
 //post
@@ -42,7 +42,7 @@ function addItem({ name, imageUrl, weather }, token) {
       Authorization: `Bearer ${token}`,
     },
     body: JSON.stringify({ name, imageUrl, weather }),
-  }).then(isokay);
+  }).then(isOkay);
 }
 
 //signup
@@ -53,7 +53,7 @@ function signUp({ name, avatar, email, password }) {
       "Content-Type": "application/json",
     },
     body: JSON.stringify({ name, avatar, email, password }),
-  }).then(isokay);
+  }).then(isOkay);
 }
 //signin
 function signIn({ email, password }) {
@@ -63,7 +63,7 @@ function signIn({ email, password }) {
       "Content-Type": "application/json",
     },
     body: JSON.stringify({ email, password }),
-  }).then(isokay);
+  }).then(isOkay);
 }
 //updateUser
 function updateUser({ name, avatar }, token) {
@@ -74,7 +74,7 @@ function updateUser({ name, avatar }, token) {
       Authorization: `Bearer ${token}`,
     },
     body: JSON.stringify({ name, avatar }),
-  }).then(isokay);
+  }).then(isOkay);
 }
 
 function addCardLike(itemId, token) {
@@ -84,7 +84,7 @@ function addCardLike(itemId, token) {
       "Content-Type": "application/json",
       Authorization: `Bearer ${token}`,
     },
-  }).then(isokay);
+  }).then(isOkay);
 }
 function removeCardLike(itemId, token) {
   return fetch(`${baseUrl}/items/${itemId}/likes`, {
@@ -93,7 +93,7 @@ function removeCardLike(itemId, token) {
       "Content-Type": "application/json",
       Authorization: `Bearer ${token}`,
     },
-  }).then(isokay);
+  }).then(isOkay);
 }
 export {
   getItems,
@@ -101,7 +101,7 @@ export {
   addItem,
   signUp,
   signIn,
-  isokay,
+  isOkay,
   getUser,
   updateUser,
   addCardLike,

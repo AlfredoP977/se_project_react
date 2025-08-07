@@ -8,10 +8,8 @@ import { useContext } from "react";
 function ItemCard({ item, onCardClick, handleCardLike }) {
   const currentUser = useContext(CurrentUserContext);
   const isLoggedIn = useContext(IsLoggedInContext);
-  console.log(item.likes, "item.likes");
   const isLiked = item.likes.includes(currentUser._id);
   const id = item._id;
-  console.log(isLiked, "isLiked");
 
   return (
     <li className="card-container">

@@ -27,9 +27,6 @@ export default function LoginModal({
     });
   };
 
-  // console.log(name);
-  // console.log(weather);
-
   return (
     <ModalWithForm
       buttonText="Log in"

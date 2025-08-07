@@ -38,9 +38,6 @@ export default function AddItemModal({
     });
   };
 
-  // console.log(name);
-  // console.log(weather);
-
   return (
     <ModalWithForm
       buttonText="Add garment"

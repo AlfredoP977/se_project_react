@@ -28,9 +28,6 @@ export default function UpdateModal({ onClose, isOpen, onUpdateModalSubmit }) {
     });
   };
 
-  // console.log(name);
-  // console.log(weather);
-
   return (
     <ModalWithForm
       buttonText="update"

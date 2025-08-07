@@ -43,8 +43,6 @@ import IsLoggedInContext from "../../contexts/isLoggedInContext.jsx";
 
 //app
 function App() {
-  console.log("App component mounted!");
-
   //check if user is loggedin
   const [currentUser, setCurrentUser] = useState({
     name: "",
@@ -110,12 +108,6 @@ function App() {
   };
   //register
   const onRegisterModalSubmit = ({ name, avatar, email, password }) => {
-    console.log(" name, avatar, email, password", {
-      name,
-      avatar,
-      email,
-      password,
-    });
     signUp({ name, avatar, email, password })
       .then(() => {
         onLoginModalSubmit({ email, password });
@@ -126,17 +118,14 @@ function App() {
   };
   //login
   const onLoginModalSubmit = ({ email, password }) => {
-    console.log(" email, password", email, password);
     signIn({ email, password })
       .then((data) => {
-        console.log("Login response data:", data);
         if (data.token) {
           setToken(data.token);
           getUser(data.token)
             .then(({ name, email, avatar, _id }) => {
               setIsLoggedIn(true);
               setCurrentUser({ name, email, avatar, _id });
-              console.log("User", currentUser);
             })
             .catch(console.error);
           closeActiveModal();
@@ -166,7 +155,6 @@ function App() {
       });
   };
   const handleAddItemModalSubmit = ({ name, imageUrl, weather, reset }) => {
-    console.log(" name, imageUrl, weather", name, imageUrl, weather);
     const jwt = getToken();
     if (!jwt) {
       return;
@@ -187,8 +175,6 @@ function App() {
     if (!jwt) {
       return;
     }
-    console.log("selectedCard._id:", selectedCard._id);
-    console.log("jwt token:", jwt);
     deleteItem(selectedCard._id, jwt)
       .then((item) => {
         console.log("item", item);
@@ -204,7 +190,6 @@ function App() {
   };
 
   const handleCardLike = ({ id, isLiked }) => {
-    console.log("handleCardLike", "isLiked", isLiked, "id", id);
     const jwt = getToken();
     if (!jwt) {
       return;
@@ -232,9 +217,7 @@ function App() {
         if (!data || typeof data !== "object") {
           throw new Error("Invalid API response");
         }
-        console.log("Raw API Data:", JSON.stringify(data, null, 2));
         const filteredData = filterWeatherData(data);
-        console.log("Filtered Data:", filteredData);
         setWeatherData(filteredData);
       })
       .catch((error) => {

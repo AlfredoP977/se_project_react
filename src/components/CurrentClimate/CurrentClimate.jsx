@@ -10,7 +10,6 @@ function CurrentClimate({ selectedCurrentClimate }) {
     : weatherCondition.find((item) => {
         return item.name === "ClearDay";
       });
-  console.log("currentClimate.name", currentClimate.name);
   return (
     <img
       src={currentClimate.image}

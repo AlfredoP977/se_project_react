@@ -29,7 +29,6 @@ function Header({
 
       <div className="header__user-container">
         <ToggleSwitch />
-        {console.log(isLoggedIn, "isLoggedIn")}
         {isLoggedIn ? (
           <>
             <button

@@ -4,7 +4,6 @@ import CurrentTemperatureUnitContext from "../../contexts/CurrentTemperatureUnit
 import CurrentClimate from "../CurrentClimate/CurrentClimate";
 
 function WeatherCard({ weatherData }) {
-  console.log("weatherData.condition", weatherData);
   console.log(
     "name:",
     `${

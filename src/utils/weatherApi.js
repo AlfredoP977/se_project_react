@@ -1,11 +1,11 @@
-import { isokay } from "./api";
+import { isOkay } from "./api";
 
 export const getWeather = async ({ latitude, longitude }, APIkey) => {
   try {
     const res = await fetch(
       `https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&units=imperial&appid=${APIkey}`
     );
-    const data = await isokay(res);
+    const data = await isOkay(res);
     return data;
   } catch (error) {
     console.error("Error fetching weather:", error);

@@ -176,13 +176,11 @@ function App() {
       return;
     }
     deleteItem(selectedCard._id, jwt)
-      .then((item) => {
-        console.log("item", item);
-        console.log("selectedCard", selectedCard);
+      .then(() => {
         setClothingItems(
           clothingItems.filter((item) => item._id !== selectedCard._id)
         );
-        console.log("clothingItems", clothingItems), closeActiveModal();
+        closeActiveModal();
       })
       .catch((error) => {
         console.error("API Error:", error);

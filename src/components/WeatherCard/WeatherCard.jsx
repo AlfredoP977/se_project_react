@@ -4,13 +4,6 @@ import CurrentTemperatureUnitContext from "../../contexts/CurrentTemperatureUnit
 import CurrentClimate from "../CurrentClimate/CurrentClimate";
 
 function WeatherCard({ weatherData }) {
-  console.log(
-    "name:",
-    `${
-      weatherData.condition.charAt(0).toUpperCase() +
-      weatherData.condition.slice(1)
-    }${weatherData.isDay ? "Day" : "Night"}`
-  );
   const { currentTemperatureUnit } = useContext(CurrentTemperatureUnitContext);
   return (
     <section className="weather-card">
